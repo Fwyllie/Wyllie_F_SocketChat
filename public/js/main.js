@@ -2,18 +2,18 @@
   const socket = io();
 
   let messageList = document.querySelector('ul'),
-      charForm = document.querySelector('form'),
+      chatForm = document.querySelector('form'),
       chatMessage = chatForm.querySelector('.message');
 
       function appendMessage(msg){
         //debugger;
-        let newMsg = `<li>${msg.message}</li>`
+        let newMsg = `<li>${msg.message}</li>`;
         messageList.innerHTML += newMsg;
       }
 
       function appendDiscMessage (msg){
         //debugger;
-        let newMsg = `<li>${msg}</li>`
+        let newMsg = `<li>${msg}</li>`;
         messageList.innerHTML += newMsg;
       }
 
