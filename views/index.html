@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Socket IO Chat with Node!</title>
+	<title>Fran's Chat</title>
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<div id="login">
-        <h2>Enter your name.</h2>
-				<input type="text" class="nickname" maxlength="20" placeholder="nickname?">
+    <h2>Enter your name.</h2>
+		<input type="text" class="nickname" maxlength="20" placeholder="nickname?">
   </div>
+	<h1 id="welcomeM"></h1>
 	<div id="container" class="container">
-		<h1 id="welcomeM"></h1>
 		<ul id="messages"></ul>
-		<form>
-			<input class="message" type="text" id="m" autocomplete="off">
-			<button>send</button>
-		</form>
 	</div>
+	<form>
+		<input class="message" placeholder="Type here" type="text" id="m" autocomplete="off">
+	</form>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
 </body>

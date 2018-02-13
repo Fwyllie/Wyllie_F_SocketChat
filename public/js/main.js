@@ -4,16 +4,17 @@
   let messageList = document.querySelector('ul'),
       chatForm = document.querySelector('form'),
       chatMessage = chatForm.querySelector('.message'),
-      nameInput = document.querySelector('.nickname'),
-      nickName = null;
+      nameInput = document.querySelector('.nickname');
+
 
       function setNickname(){
+        // nickName = "";
+        nameInput.addEventListener('keyup', leaveLogin, false);
         nickName = this.value;
-        nameInput.addEventListener("keyup", leaveLogin, false);
+        socket.emit('add user', nickName);
       }
       function leaveLogin(e){
         if(e.code == 'Enter'){
-          console.log("leavelogin");
           let loginScreen =  document.querySelector("#login");
           let WelcomeMes = document.querySelector("#welcomeM");
           loginScreen.style.display = "none";
@@ -32,7 +33,7 @@
         chatMessage.value = "";
         return false;
       }
-      function appendDiscMessage (msg){
+      function appendDiscMessage (msg, nickName){
         let newMsg = `<li>${msg}</li>`;
         messageList.innerHTML += newMsg;
       }

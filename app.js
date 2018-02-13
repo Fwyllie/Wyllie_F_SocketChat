@@ -16,19 +16,19 @@ const server = app.listen(3000, ()=>{
 
 io.attach(server);
 
-
-io.on('connection', socket => {
+io.on('connection', socket =>{
   console.log('a user has connected');
-  
-  io.emit('chat message', { for : 'everyone', message : `${socket.id} has joined!`});
+
+  socket.on('add user', nickName =>{
+    io.emit('chat message', { for : 'everyone', message : `${nickName} has joined!`});
+  });
 
   socket.on('chat message', msg => {
     io.emit('chat message', { for : 'everyone', message : msg});
   });
 
-  socket.on('disconnect', () => {
+  socket.on('disconnect', (nickName) => {
     console.log('a user disconnected');
-    io.emit('disconnect message', `${socket.id} has left.`);
-  });
-
-})
+      io.emit('disconnect message', `${nickName} left.`);
+    });
+});
