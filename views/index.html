@@ -6,12 +6,18 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<input type="text" class="nickname" placeholder="What is your nickname?">
-	<ul id="messages"></ul>
-	<form>
-		<input class="message" type="text" id="m" autocomplete="off">
-		<button>send</button>
-	</form>
+	<div id="login">
+        <h2>Enter your name.</h2>
+				<input type="text" class="nickname" maxlength="20" placeholder="nickname?">
+  </div>
+	<div id="container" class="container">
+		<h1 id="welcomeM"></h1>
+		<ul id="messages"></ul>
+		<form>
+			<input class="message" type="text" id="m" autocomplete="off">
+			<button>send</button>
+		</form>
+	</div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
 </body>
