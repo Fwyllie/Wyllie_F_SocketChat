@@ -8,7 +8,6 @@
 
 
       function setNickname(){
-        // nickName = "";
         nameInput.addEventListener('keyup', leaveLogin, false);
         nickName = this.value;
         socket.emit('add user', nickName);
@@ -42,4 +41,5 @@
       chatForm.addEventListener('submit', handleSendMessage, false);
       socket.addEventListener('chat message', appendMessage, false);
       socket.addEventListener('disconnect message', appendDiscMessage, false);
+      userAmt.addEventListener('change', updateUsers, false);
 })();

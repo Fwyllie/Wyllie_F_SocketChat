@@ -14,21 +14,23 @@ const server = app.listen(3000, ()=>{
   console.log('listening on port 3000');
 });
 
+var userAmt = 0;
+
 io.attach(server);
 
 io.on('connection', socket =>{
-  console.log('a user has connected');
 
-  socket.on('add user', nickName =>{
+  socket.on('add user', (nickName, userAmt) =>{
     io.emit('chat message', { for : 'everyone', message : `${nickName} has joined!`});
+    userAmt++;
   });
 
   socket.on('chat message', msg => {
     io.emit('chat message', { for : 'everyone', message : msg});
   });
 
-  socket.on('disconnect', (nickName) => {
-    console.log('a user disconnected');
-      io.emit('disconnect message', `${nickName} left.`);
-    });
+  socket.on('disconnect', (nickName, userAmt) => {
+    io.emit('disconnect message', `${nickName} has left.`);
+    userAmt--;
+  });
 });
