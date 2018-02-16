@@ -28,14 +28,11 @@ body {
 	margin-top: 30px;
 	text-align: center;
 }
-#container{
-	overflow: scroll;
-}
 form {
 	background: #292033;
 	padding: 10px;
 	position: fixed;
-
+	bottom: 5%;
 	left: 5%;
 	width: 90%;
 }
@@ -48,6 +45,8 @@ form input{
 #messages {
 	list-style-type: none;
 	padding: 20px;
+	height: 75vh;
+	overflow-y: auto;
 }
 #messages li{
 	padding: 5px 10px;

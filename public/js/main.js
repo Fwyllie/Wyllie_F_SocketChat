@@ -6,7 +6,6 @@
       chatMessage = chatForm.querySelector('.message'),
       nameInput = document.querySelector('.nickname');
 
-
       function setNickname(){
         nameInput.addEventListener('keyup', leaveLogin, false);
         nickName = this.value;
@@ -17,16 +16,17 @@
           let loginScreen =  document.querySelector("#login");
           let WelcomeMes = document.querySelector("#welcomeM");
           loginScreen.style.display = "none";
-          welcomeM.innerHTML = "Welcome to the chat " + nickName;
+          welcomeM.innerHTML = "Welcome to Fran's chat " + nickName;
         }
       }
       function appendMessage(msg){
         let newMsg = `<li>${msg.message}</li>`;
         messageList.innerHTML += newMsg;
+        // nickName.style.color = '#' + ('000000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
       }
       function handleSendMessage(e){
         e.preventDefault();
-        nickname = (nickName && nickName.length > 0) ? nickName : 'user'; //shorthand if/else
+        nickname = (nickName && nickName.length > 0) ? nickName : 'user';
         msg = `${nickName} : ${chatMessage.value}`;
         socket.emit('chat message', msg);
         chatMessage.value = "";
@@ -41,5 +41,4 @@
       chatForm.addEventListener('submit', handleSendMessage, false);
       socket.addEventListener('chat message', appendMessage, false);
       socket.addEventListener('disconnect message', appendDiscMessage, false);
-      userAmt.addEventListener('change', updateUsers, false);
 })();
